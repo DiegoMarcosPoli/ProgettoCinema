@@ -1,0 +1,5 @@
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.csprojAssemblyReference.cache
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\MainWindow.g.cs
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\App.g.cs
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema_MarkupCompile.cache
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema_MarkupCompile.lref
