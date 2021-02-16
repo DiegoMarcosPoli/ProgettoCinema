@@ -5,35 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PreanotazioneCinema"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btnCassa1" Content="Cassa 1" HorizontalAlignment="Left" Margin="143,296,0,0" VerticalAlignment="Top" Width="105" Height="38" Click="btnCassa1_Click"/>
-        <Button x:Name="btnCassa2" Content="Cassa 2" HorizontalAlignment="Left" Margin="498,296,0,0" VerticalAlignment="Top" Width="104" Height="38" Click="btnCassa2_Click"/>
-        <TextBox x:Name="txtInCassa1" HorizontalAlignment="Left" Height="23" Margin="143,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
-        <TextBox x:Name="txtInCassa2" HorizontalAlignment="Left" Height="23" Margin="497,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
-        <Button Content="Simula" HorizontalAlignment="Left" Margin="322,296,0,0" VerticalAlignment="Top" Width="98" Height="38" Click="Button_Click"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="14,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="91,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="168,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="245,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="245,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="322,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="399,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="476,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="553,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="630,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="707,5,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="14,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="91,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="168,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="245,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="399,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="476,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="553,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="630,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="707,88,0,0" VerticalAlignment="Top" Width="72"/>
-        <Image HorizontalAlignment="Left" Height="69" Margin="322,88,0,0" VerticalAlignment="Top" Width="72"/>
-       
+        Title="MainWindow" Height="652.8" Width="837">
+    <Grid Margin="0,0,72,4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnCassa1" Content="Cassa 1" HorizontalAlignment="Left" Margin="95,35,0,0" VerticalAlignment="Top" Width="105" Height="38" Click="btnCassa1_Click" Grid.Row="1"/>
+        <Button x:Name="btnCassa2" Content="Cassa 2" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Width="104" Height="38" Click="btnCassa2_Click" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="txtInCassa1" HorizontalAlignment="Left" Height="23" Margin="95,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Grid.Row="1"/>
+        <TextBox x:Name="txtInCassa2" HorizontalAlignment="Left" Height="23" Margin="0,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Simula" HorizontalAlignment="Left" Margin="373,35,0,0" VerticalAlignment="Top" Width="98" Height="38" Click="Button_Click" Grid.Row="1"/>
+        <Image x:Name="imgPosto1" HorizontalAlignment="Left" Height="206" Margin="10,0,0,0" VerticalAlignment="Top" Width="693" Source="poltrona1.png" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="294" Margin="95,-55,0,0" VerticalAlignment="Top" Width="555" Source="poltrona2.png" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="242" Margin="266,-45,0,0" VerticalAlignment="Top" Width="308" Source="poltrona3.png"/>
+        <Image HorizontalAlignment="Left" Height="154" Margin="476,10,0,0" VerticalAlignment="Top" Width="204" Source="poltrona4.png" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="182" Margin="8,15,-176,0" VerticalAlignment="Top" Width="283" Source="poltrona5.png" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="169" Margin="10,211,0,0" VerticalAlignment="Top" Width="170" Source="poltrona6.png"/>
+        <Image HorizontalAlignment="Left" Height="169" Margin="168,211,0,0" VerticalAlignment="Top" Width="170" Source="poltrona7.png"/>
+        <Image HorizontalAlignment="Left" Height="204" Margin="322,202,0,0" VerticalAlignment="Top" Width="188" Source="poltrona8.png"/>
+        <Image HorizontalAlignment="Left" Height="169" Margin="495,202,0,0" VerticalAlignment="Top" Width="179" Source="poltrona9.png" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="200" Margin="0,202,-110,0" VerticalAlignment="Top" Width="225" Source="poltrona10.png" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="24,28,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="182,28,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="339,28,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="495,28,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="38,28,-55,0" VerticalAlignment="Top" Width="132" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="31,211,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="185,211,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="343,211,0,0" VerticalAlignment="Top" Width="132"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="515,211,0,0" VerticalAlignment="Top" Width="132" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="136" Margin="32,206,-49,0" VerticalAlignment="Top" Width="132" Grid.Column="1" Source="poltrona1.png"/>
+
 
     </Grid>
 </Window>

@@ -95,5 +95,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="poltrona1.png" />
+    <Resource Include="poltrona10.png" />
+    <Resource Include="poltrona2.png" />
+    <Resource Include="poltrona3.png" />
+    <Resource Include="poltrona4.png" />
+    <Resource Include="poltrona5.png" />
+    <Resource Include="poltrona6.png" />
+    <Resource Include="poltrona7.png" />
+    <Resource Include="poltrona8.png" />
+    <Resource Include="poltrona9.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
