@@ -21,17 +21,39 @@ namespace PreanotazioneCinema
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Image> images;
+        private List<Image> occupa;
         private List<Posto> posti;
-        private Queue<string> prenotazioni;
+   
         Random r;
+        Thread c1;
+        Thread c2;
         bool inCorso = false;
         public MainWindow()
         {
-            posti = new List<Posto>(12);
-            r=new Random();
-            prenotazioni = new Queue<string>();
-            InitializeComponent();
+            images = new List<Image>();
+            occupa = new List<Image>();
+            occupa.Add(imgOccupato1); occupa.Add(imgOccupato2); occupa.Add(imgOccupato3); occupa.Add(imgOccupato4); occupa.Add(imgOccupato5); occupa.Add(imgOccupato6); occupa.Add(imgOccupato7); occupa.Add(imgOccupato8); occupa.Add(imgOccupato9); occupa.Add(imgOccupato10);
+            images.Add(imgPosto1); images.Add(imgPosto2); images.Add(imgPosto3); images.Add(imgPosto4); images.Add(imgPosto5); images.Add(imgPosto6); images.Add(imgPosto7); images.Add(imgPosto8); images.Add(imgPosto9); images.Add(imgPosto10);
+            posti = new List<Posto>(10);
+            Posto p1 = new Posto(1, false);
+            Posto p2 = new Posto(2, false);
+            Posto p3 = new Posto(3, false);
+            Posto p4 = new Posto(4, false);
+            Posto p5 = new Posto(5, false);
+            Posto p6 = new Posto(6, false);
+            Posto p7 = new Posto(7, false);
+            Posto p8 = new Posto(8, false);
+            Posto p9 = new Posto(9, false);
+            Posto p10 = new Posto(10, false);
+            posti.Add(p1); posti.Add(p2); posti.Add(p3); posti.Add(p4); posti.Add(p5); posti.Add(p6); posti.Add(p7); posti.Add(p8); posti.Add(p9); posti.Add(p10);
+
+
+            r =new Random();
             
+            InitializeComponent();
+            c1 = new Thread(new ThreadStart(Simula));
+            c2 = new Thread(new ThreadStart(Simula));
 
         }
 
@@ -63,11 +85,10 @@ namespace PreanotazioneCinema
             {
                 foreach (Posto p in posti)
                 {
-                    if (Convert.ToInt32(txtInCassa2) == p.Numero && p.Occupato == false)
+                    if (Convert.ToInt32(txtInCassa2.Text) == p.Numero && p.Occupato == false)
                     {
                         p.Occupato = true;
-                        GestisciImmagini(txtInCassa1.Text);
-                        break;
+                        GestisciImmagini(txtInCassa2.Text);                      
                     }
                 }
                 txtInCassa2.Text = "";
@@ -79,14 +100,33 @@ namespace PreanotazioneCinema
         }
         public void GestisciImmagini(string nPosto)
         {
-
+            foreach (Image img in images)
+            {
+                bool verifica=false;
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    verifica = img.Name.Contains(nPosto);
+                }));
+                if (verifica)
+                {
+                    foreach (Image m in occupa)
+                    {
+                        if (m.Name.Contains(nPosto))
+                        {
+                            m.Visibility = Visibility.Visible;
+                            break;
+                        }
+                    }
+                }
+            }
+                
         }
         public void Simula()
         {           
             if (inCorso == false)
             {
                 inCorso = true;
-                for (int i = 0; i < 12; i++)
+                for (int i = 1; i < 11; i++)
                 {
                     lock (posti)
                     {
@@ -99,14 +139,12 @@ namespace PreanotazioneCinema
                                 GestisciImmagini(daPrenotare.ToString());
                             }
                         }
-                        inCorso = false;
+                        
                     }
                 }
+                inCorso = false;
             }
-            else
-            {               
-                prenotazioni.Enqueue(GeneraRandom().ToString());
-            }
+            
 
             
         }
@@ -117,16 +155,31 @@ namespace PreanotazioneCinema
         
         public int GeneraRandom()
         {
-            int daPrenotare = r.Next(0, 12);
+            int daPrenotare = r.Next(1, 11);
             return daPrenotare;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnSimula_Click(object sender, RoutedEventArgs e)
         {
-            Thread c1 = new Thread(new ThreadStart(Simula));
-            Thread c2 = new Thread(new ThreadStart(Simula));
             c1.Start();
             c2.Start();
+        }
+
+        private void txtInCassa1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnCassa1.IsEnabled = true;
+        }
+
+        private void txtInCassa2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnCassa2.IsEnabled = true;
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Image m in occupa)
+            {
+                m.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

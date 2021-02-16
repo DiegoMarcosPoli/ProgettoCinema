@@ -107,5 +107,8 @@
     <Resource Include="poltrona8.png" />
     <Resource Include="poltrona9.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="occupato.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,11 +38,7 @@ namespace PreanotazioneCinema
             }
             set
             {
-                if (!value==false)
-                    throw new Exception();               
-                else
-                    _occupato = value;
-
+                _occupato = value;
             }
         }
 
