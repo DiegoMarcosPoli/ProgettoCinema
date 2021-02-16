@@ -23,11 +23,16 @@ namespace PreanotazioneCinema
     {
         private List<Posto> posti;
         private Queue<string> prenotazioni;
+        Random r;
+        bool inCorso = false;
         public MainWindow()
         {
             posti = new List<Posto>(12);
+            r=new Random();
+            prenotazioni = new Queue<string>();
             InitializeComponent();
-            Thread c1 = new ThreadStart();
+            
+
         }
 
         private void btnCassa1_Click(object sender, RoutedEventArgs e)
@@ -43,6 +48,7 @@ namespace PreanotazioneCinema
                         break;
                     }
                 }
+                txtInCassa1.Text = "";
             }
             catch(Exception ex)
             {
@@ -64,6 +70,7 @@ namespace PreanotazioneCinema
                         break;
                     }
                 }
+                txtInCassa2.Text = "";
             }
             catch (Exception ex)
             {
@@ -75,24 +82,51 @@ namespace PreanotazioneCinema
 
         }
         public void Simula()
-        {
-            Random r;
-            r = new Random();
-
-
-            for (int i = 0; i < 12; i++)
+        {           
+            if (inCorso == false)
             {
-                
-                int daPrenotare= r.Next(0, 13);
-                foreach (Posto p in posti)
+                inCorso = true;
+                for (int i = 0; i < 12; i++)
                 {
-                    if(p.Numero==daPrenotare && p.Occupato == false)
+                    lock (posti)
                     {
-                        p.Occupato = true;
+                        int daPrenotare = GeneraRandom();
+                        foreach (Posto p in posti)
+                        {
+                            if (p.Numero == daPrenotare && p.Occupato == false)
+                            {
+                                p.Occupato = true;
+                                GestisciImmagini(daPrenotare.ToString());
+                            }
+                        }
+                        inCorso = false;
                     }
                 }
             }
+            else
+            {               
+                prenotazioni.Enqueue(GeneraRandom().ToString());
+            }
 
+            
+        }
+       /*public void Shish()
+        {
+            ();
+        }*/
+        
+        public int GeneraRandom()
+        {
+            int daPrenotare = r.Next(0, 12);
+            return daPrenotare;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Thread c1 = new Thread(new ThreadStart(Simula));
+            Thread c2 = new Thread(new ThreadStart(Simula));
+            c1.Start();
+            c2.Start();
         }
     }
 }

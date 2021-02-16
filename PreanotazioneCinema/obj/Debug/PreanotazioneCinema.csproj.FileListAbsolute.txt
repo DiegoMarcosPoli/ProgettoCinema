@@ -3,3 +3,13 @@ C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\Ma
 C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\App.g.cs
 C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema_MarkupCompile.cache
 C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema_MarkupCompile.lref
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\bin\Debug\PreanotazioneCinema.exe.config
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\bin\Debug\PreanotazioneCinema.exe
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\bin\Debug\PreanotazioneCinema.pdb
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\MainWindow.baml
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.g.resources
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.Properties.Resources.resources
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.csproj.GenerateResource.cache
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.csproj.CoreCompileInputs.cache
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.exe
+C:\Users\sunki\source\repos\PreanotazioneCinema\PreanotazioneCinema\obj\Debug\PreanotazioneCinema.pdb

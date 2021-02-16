@@ -126,6 +126,14 @@ namespace PreanotazioneCinema {
             case 4:
             this.txtInCassa2 = ((System.Windows.Controls.TextBox)(target));
             return;
+            case 5:
+            
+            #line 14 "..\..\MainWindow.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            
+            #line default
+            #line hidden
+            return;
             }
             this._contentLoaded = true;
         }

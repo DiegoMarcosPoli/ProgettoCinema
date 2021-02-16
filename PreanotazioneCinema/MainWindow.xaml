@@ -11,6 +11,29 @@
         <Button x:Name="btnCassa2" Content="Cassa 2" HorizontalAlignment="Left" Margin="498,296,0,0" VerticalAlignment="Top" Width="104" Height="38" Click="btnCassa2_Click"/>
         <TextBox x:Name="txtInCassa1" HorizontalAlignment="Left" Height="23" Margin="143,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
         <TextBox x:Name="txtInCassa2" HorizontalAlignment="Left" Height="23" Margin="497,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
+        <Button Content="Simula" HorizontalAlignment="Left" Margin="322,296,0,0" VerticalAlignment="Top" Width="98" Height="38" Click="Button_Click"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="14,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="91,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="168,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="245,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="245,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="322,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="399,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="476,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="553,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="630,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="707,5,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="14,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="91,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="168,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="245,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="399,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="476,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="553,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="630,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="707,88,0,0" VerticalAlignment="Top" Width="72"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="322,88,0,0" VerticalAlignment="Top" Width="72"/>
+       
 
     </Grid>
 </Window>
