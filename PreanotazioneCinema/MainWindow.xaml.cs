@@ -24,13 +24,15 @@ namespace PreanotazioneCinema
         private List<Image> images;
         private List<Image> occupa;
         private List<Posto> posti;
+        private object x;
    
         Random r;
         Thread c1;
         Thread c2;
-        bool inCorso = false;
+        bool inCorso=false ;
         public MainWindow()
         {
+            InitializeComponent();
             images = new List<Image>();
             occupa = new List<Image>();
             occupa.Add(imgOccupato1); occupa.Add(imgOccupato2); occupa.Add(imgOccupato3); occupa.Add(imgOccupato4); occupa.Add(imgOccupato5); occupa.Add(imgOccupato6); occupa.Add(imgOccupato7); occupa.Add(imgOccupato8); occupa.Add(imgOccupato9); occupa.Add(imgOccupato10);
@@ -47,30 +49,75 @@ namespace PreanotazioneCinema
             Posto p9 = new Posto(9, false);
             Posto p10 = new Posto(10, false);
             posti.Add(p1); posti.Add(p2); posti.Add(p3); posti.Add(p4); posti.Add(p5); posti.Add(p6); posti.Add(p7); posti.Add(p8); posti.Add(p9); posti.Add(p10);
-
+            x = new object();
 
             r =new Random();
             
-            InitializeComponent();
-            c1 = new Thread(new ThreadStart(Simula));
-            c2 = new Thread(new ThreadStart(Simula));
+            
+            
 
         }
+        public void Cassa1()
+        {
+            int ps = 0;
+            
 
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                ps = int.Parse(txtInCassa1.Text);
+            }));
+            lock (x)
+            {
+                foreach (Posto p in posti)
+                {
+                    if (ps == p.Numero && p.Occupato == false)
+                    {
+                        p.Occupato = true;
+                        GestisciImmagini(ps.ToString());
+                        break;
+                    }
+                }                
+            }
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                txtInCassa1.Text = "";
+            }));
+
+        }
+        public void Cassa2()
+        {
+            int ps = 0;
+
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                ps = int.Parse(txtInCassa2.Text);
+            }));
+            lock (x)
+            {
+                foreach (Posto p in posti)
+                {
+                    if (ps == p.Numero && p.Occupato == false)
+                    {
+                        p.Occupato = true;
+                        GestisciImmagini(ps.ToString());
+                        break;
+                    }
+                }
+            }            
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                txtInCassa2.Text = "";
+            }));
+
+        }
         private void btnCassa1_Click(object sender, RoutedEventArgs e)
         {
             try 
             {
-                foreach (Posto p in posti)
-                {
-                    if (Convert.ToInt32(txtInCassa1.Text) == p.Numero && p.Occupato == false)
-                    {
-                        p.Occupato = true;
-                        GestisciImmagini(txtInCassa1.Text);
-                        break;
-                    }
-                }
-                txtInCassa1.Text = "";
+
+                c1 = new Thread(new ThreadStart(Cassa1));
+                c1.Start();
             }
             catch(Exception ex)
             {
@@ -83,15 +130,8 @@ namespace PreanotazioneCinema
         {
             try
             {
-                foreach (Posto p in posti)
-                {
-                    if (Convert.ToInt32(txtInCassa2.Text) == p.Numero && p.Occupato == false)
-                    {
-                        p.Occupato = true;
-                        GestisciImmagini(txtInCassa2.Text);                      
-                    }
-                }
-                txtInCassa2.Text = "";
+                c2 = new Thread(new ThreadStart(Cassa2));
+                c2.Start();
             }
             catch (Exception ex)
             {
@@ -102,44 +142,57 @@ namespace PreanotazioneCinema
         {
             foreach (Image img in images)
             {
-                bool verifica=false;
+                /*img.Name.ToString().Contains(nPosto)*/
+                bool verifica =false;
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     verifica = img.Name.Contains(nPosto);
                 }));
                 if (verifica)
                 {
+                   
                     foreach (Image m in occupa)
                     {
-                        if (m.Name.Contains(nPosto))
+                        bool verificaDueLaVendetta=false;
+                        this.Dispatcher.BeginInvoke(new Action(() =>
                         {
-                            m.Visibility = Visibility.Visible;
+                            verificaDueLaVendetta = m.Name.Contains(nPosto);
+                        }));
+                        if (verificaDueLaVendetta)
+                        {
+
+                            this.Dispatcher.BeginInvoke(new Action(() =>
+                            {
+                                m.Visibility = Visibility.Visible;
+                            }));                            
                             break;
                         }
+                        
                     }
+                    break;
                 }
+
             }
                 
         }
         public void Simula()
-        {           
-            if (inCorso == false)
+        {
+            if (inCorso==false)
             {
                 inCorso = true;
-                for (int i = 1; i < 11; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    lock (posti)
+                    int daPrenotare = GeneraRandom();
+                    foreach (Posto p in posti)
                     {
-                        int daPrenotare = GeneraRandom();
-                        foreach (Posto p in posti)
+                        if (p.Numero == daPrenotare && p.Occupato == false)
                         {
-                            if (p.Numero == daPrenotare && p.Occupato == false)
+                            lock (x)
                             {
                                 p.Occupato = true;
                                 GestisciImmagini(daPrenotare.ToString());
                             }
                         }
-                        
                     }
                 }
                 inCorso = false;
@@ -160,6 +213,8 @@ namespace PreanotazioneCinema
         }
         private void btnSimula_Click(object sender, RoutedEventArgs e)
         {
+            c1 = new Thread(new ThreadStart(Simula));
+            c2 = new Thread(new ThreadStart(Simula));
             c1.Start();
             c2.Start();
         }
