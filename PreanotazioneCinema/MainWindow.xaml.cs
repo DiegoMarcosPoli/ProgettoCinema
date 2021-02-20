@@ -21,6 +21,7 @@ namespace PreanotazioneCinema
     /// </summary>
     public partial class MainWindow : Window
     {
+        int ps = 0;
         private List<Image> images;
         private List<Image> occupa;
         private List<Posto> posti;
@@ -59,24 +60,16 @@ namespace PreanotazioneCinema
         }
         public void Cassa1()
         {
-            int ps = 0;
-            
+                      
 
-            this.Dispatcher.BeginInvoke(new Action(() =>
+            foreach (Posto p in posti)
             {
-                ps = int.Parse(txtInCassa1.Text);
-            }));
-            lock (x)
-            {
-                foreach (Posto p in posti)
+                if (ps == p.Numero && p.Occupato == false)
                 {
-                    if (ps == p.Numero && p.Occupato == false)
-                    {
-                        p.Occupato = true;
-                        GestisciImmagini(ps.ToString());
-                        break;
-                    }
-                }                
+                    p.Occupato = true;
+                    GestisciImmagini(ps.ToString());
+                    break;
+                }
             }
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
@@ -86,36 +79,27 @@ namespace PreanotazioneCinema
         }
         public void Cassa2()
         {
-            int ps = 0;
-
-
-            this.Dispatcher.BeginInvoke(new Action(() =>
+            foreach (Posto p in posti)
             {
-                ps = int.Parse(txtInCassa2.Text);
-            }));
-            lock (x)
-            {
-                foreach (Posto p in posti)
+                if (ps == p.Numero && p.Occupato == false)
                 {
-                    if (ps == p.Numero && p.Occupato == false)
-                    {
-                        p.Occupato = true;
-                        GestisciImmagini(ps.ToString());
-                        break;
-                    }
+                    p.Occupato = true;
+                    GestisciImmagini(ps.ToString());
+                    break;
                 }
-            }            
+            }
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 txtInCassa2.Text = "";
             }));
+
 
         }
         private void btnCassa1_Click(object sender, RoutedEventArgs e)
         {
             try 
             {
-
+                ps = int.Parse(txtInCassa1.Text);
                 c1 = new Thread(new ThreadStart(Cassa1));
                 c1.Start();
             }
@@ -130,6 +114,7 @@ namespace PreanotazioneCinema
         {
             try
             {
+                ps = int.Parse(txtInCassa2.Text);
                 c2 = new Thread(new ThreadStart(Cassa2));
                 c2.Start();
             }
@@ -140,9 +125,12 @@ namespace PreanotazioneCinema
         }
         public void GestisciImmagini(string nPosto)
         {
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                occupa[int.Parse(nPosto) - 1].Visibility = Visibility.Visible;
+            }));/*
             foreach (Image img in images)
             {
-                /*img.Name.ToString().Contains(nPosto)*/
                 bool verifica =false;
                 this.Dispatcher.BeginInvoke(new Action(() =>
                 {
@@ -150,30 +138,13 @@ namespace PreanotazioneCinema
                 }));
                 if (verifica)
                 {
-                   
-                    foreach (Image m in occupa)
+                    this.Dispatcher.BeginInvoke(new Action(() =>
                     {
-                        bool verificaDueLaVendetta=false;
-                        this.Dispatcher.BeginInvoke(new Action(() =>
-                        {
-                            verificaDueLaVendetta = m.Name.Contains(nPosto);
-                        }));
-                        if (verificaDueLaVendetta)
-                        {
-
-                            this.Dispatcher.BeginInvoke(new Action(() =>
-                            {
-                                m.Visibility = Visibility.Visible;
-                            }));                            
-                            break;
-                        }
-                        
-                    }
+                        occupa[int.Parse(nPosto) - 1].Visibility = Visibility.Visible;
+                    }));
                     break;
                 }
-
-            }
-                
+            }*/
         }
         public void Simula()
         {
@@ -197,9 +168,6 @@ namespace PreanotazioneCinema
                 }
                 inCorso = false;
             }
-            
-
-            
         }
        /*public void Shish()
         {
@@ -234,6 +202,11 @@ namespace PreanotazioneCinema
             foreach (Image m in occupa)
             {
                 m.Visibility = Visibility.Hidden;
+                
+            }
+            foreach(Posto p in posti)
+            {
+                p.Occupato = false;
             }
         }
     }
